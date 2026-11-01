@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2b3131">
+  <title>მეკა ჟურნალი</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Serif+Georgian:wght@700&display=swap">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <h1>მეკა ჟურნალი</h1>
+          <p class="sub" id="group-name"></p>
+        </div>
+      </div>
+      <div class="top-actions" id="top-actions" hidden>
+        <label class="btn btn-primary" for="file-input">ექსპორტის ატვირთვა</label>
+        <input id="file-input" type="file" accept=".zip,.txt,application/zip,text/plain" hidden>
+        <button class="btn btn-ghost" id="logout-btn" type="button" hidden>გასვლა</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="login" id="login" hidden>
+    <form id="login-form" class="login-box">
+      <h2>შესვლა</h2>
+      <p>შეიყვანე ელფოსტა და პაროლი, რომელიც ადმინისტრატორმა მოგცა.</p>
+      <label for="email">ელფოსტა</label>
+      <input id="email" type="email" autocomplete="username" required>
+      <label for="password">პაროლი</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <p class="login-error" id="login-error" hidden></p>
+      <button class="btn btn-primary btn-wide" type="submit" id="login-btn">შესვლა</button>
+    </form>
+  </section>
+
+  <main class="wrap" id="app" hidden>
+    <aside class="demo" id="demo-banner" hidden>
+      <p><b>სატესტო ვერსია.</b> მონაცემები ინახება მხოლოდ შენს ბრაუზერში, სხვა ვერავინ ხედავს. შეგიძლია ატვირთო შენი ექსპორტი ან სცადო მაგალითით.</p>
+      <button class="btn" id="sample-btn" type="button">სატესტო მაგალითის ჩატვირთვა</button>
+    </aside>
+    <section class="tools" id="tools" hidden>
+      <input id="search" type="search" placeholder="ძებნა ტექსტში ან ავტორში…" aria-label="ძებნა">
+      <div class="dates">
+        <label>დან <input id="from" type="date"></label>
+        <label>მდე <input id="to" type="date"></label>
+      </div>
+      <button class="btn" id="excel-btn" type="button">Excel-ში ჩამოტვირთვა</button>
+      <p class="count" id="count"></p>
+    </section>
+
+    <section id="journal" aria-live="polite"></section>
+    <button class="btn btn-wide" id="more-btn" type="button" hidden>მეტი დღის ჩვენება</button>
+
+    <section class="empty" id="empty" hidden>
+      <h2>ჟურნალი ჯერ ცარიელია</h2>
+      <p>ატვირთე WhatsApp ჯგუფის ექსპორტი. გვერდი თავად დაალაგებს შეტყობინებებს დღეების მიხედვით და შეინახავს ფოტოებს.</p>
+      <div class="howto">
+        <div>
+          <h3>Android</h3>
+          <ol>
+            <li>გახსენი ჯგუფი</li>
+            <li>⋮ → მეტი → ჩატის ექსპორტი</li>
+            <li>აირჩიე „მედიით“</li>
+            <li>შეინახე ფაილი და აქ ატვირთე</li>
+          </ol>
+        </div>
+        <div>
+          <h3>iPhone</h3>
+          <ol>
+            <li>გახსენი ჯგუფი, დააჭირე სახელს</li>
+            <li>ჩატის ექსპორტი → მედიის მიმაგრება</li>
+            <li>„ფაილებში შენახვა“</li>
+            <li>აქ ატვირთე zip ფაილი</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p id="storage-note">მონაცემები ამ ეტაპზე ინახება მხოლოდ ამ მოწყობილობაზე.</p>
+      <button class="link danger" id="clear-btn" type="button">ყველაფრის წაშლა</button>
+    </footer>
+  </main>
+
+  <div class="busy" id="busy" hidden><div class="busy-box"><span class="spinner"></span><p id="busy-text">იტვირთება…</p></div></div>
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <dialog id="viewer">
+    <img id="viewer-img" alt="">
+    <div class="viewer-bar">
+      <span id="viewer-name"></span>
+      <button class="btn" id="viewer-download" type="button">ჩამოტვირთვა</button>
+      <button class="btn" id="viewer-share" type="button">გაზიარება</button>
+      <button class="btn" id="viewer-close" type="button">დახურვა</button>
+    </div>
+  </dialog>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
